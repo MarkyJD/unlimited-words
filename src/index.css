@@ -12,6 +12,10 @@
   .icon {
     @apply text-2xl cursor-pointer hover:text-purple-500;
   }
+
+  .letter {
+    @apply h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 uppercase text-lg border flex items-center justify-center border-slate-400;
+  }
 }
 
 @layer utilities {
