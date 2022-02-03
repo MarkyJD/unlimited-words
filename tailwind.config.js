@@ -2,7 +2,11 @@ module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        hand: ['"Gochi Hand"', 'cursive'],
+      },
+    },
   },
   plugins: [],
 };

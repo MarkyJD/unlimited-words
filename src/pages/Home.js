@@ -4,9 +4,11 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div className="max-w-screen-md mx-auto">
+    <div className="max-w-screen-sm md:max-w-screen-md min-h-screen mx-auto flex flex-col justify-between">
       <Header />
-      <Game />
+      <div className="flex-1">
+        <Game />
+      </div>
       <Footer />
     </div>
   );
