@@ -28,7 +28,7 @@ word_list = ""
 
 for line in lines:
   total_count += 1
-  if len(line.strip()) == 5:
+  if len(line.strip()) == word_length:
     count += 1
     word_list += line
 
