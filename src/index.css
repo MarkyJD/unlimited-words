@@ -6,15 +6,15 @@
 
 @layer components {
   .icon {
-    @apply text-2xl cursor-pointer hover:text-purple-500;
+    @apply text-2xl cursor-pointer hover:text-purple-200 dark:hover:text-blue-200;
   }
 
   .letter {
-    @apply h-14 w-14 sm:h-14 sm:w-14 md:h-16 md:w-16 uppercase text-lg border flex items-center justify-center border-slate-400;
+    @apply font-bold transition duration-150 rounded h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 uppercase text-lg border border-dashed flex items-center justify-center border-slate-300 dark:border-slate-700;
   }
 
   .buttonLetter {
-    @apply flex items-center justify-center rounded-2xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-300 dark:text-black hover:bg-purple-500;
+    @apply flex-1 items-center justify-center rounded-xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-200 dark:bg-slate-300 dark:text-black hover:bg-purple-200 dark:hover:bg-blue-200;
   }
 }
 
@@ -35,6 +35,26 @@
 
     .text-shadow-none {
       text-shadow: none;
+    }
+
+    .delay1 {
+      transition-delay: 100ms;
+    }
+
+    .delay2 {
+      transition-delay: 200ms;
+    }
+
+    .delay3 {
+      transition-delay: 300ms;
+    }
+
+    .delay4 {
+      transition-delay: 400ms;
+    }
+
+    .delay5 {
+      transition-delay: 500ms;
     }
   }
 }

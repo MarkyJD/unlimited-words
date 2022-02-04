@@ -4,7 +4,7 @@ import Word from './Word';
 
 export default function Game({ word, guesses, input }) {
   return (
-    <div className="border flex items-center justify-center flex-1">
+    <div className="flex items-center justify-center flex-1">
       {word ? (
         <div className="grid grid-cols-5 grid-rows-6 gap-2">
           <Word
