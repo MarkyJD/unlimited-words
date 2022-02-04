@@ -4,17 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer components {
   .icon {
     @apply text-2xl cursor-pointer hover:text-purple-500;
   }
 
   .letter {
-    @apply h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 uppercase text-lg border flex items-center justify-center border-slate-400;
+    @apply h-14 w-14 sm:h-14 sm:w-14 md:h-16 md:w-16 uppercase text-lg border flex items-center justify-center border-slate-400;
+  }
+
+  .buttonLetter {
+    @apply flex items-center justify-center rounded-2xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-300 dark:text-black hover:bg-purple-500;
   }
 }
 

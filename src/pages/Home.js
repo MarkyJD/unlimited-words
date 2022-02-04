@@ -8,14 +8,19 @@ import { isAlpha } from '../helpers';
 const WORD_LENGTH = 5;
 
 export default function Home() {
-  const word = useWord();
+  const { word, wordList } = useWord();
   const [input, setInput] = useState('');
   const [guesses, setGuesses] = useState([]);
+
   console.log(word);
 
-  const handleSubmit = () => {
-    setGuesses((prevGuesses) => [...prevGuesses, input]);
-    setInput('');
+  const handleSubmit = async () => {
+    if (wordList.includes(input.toLowerCase())) {
+      setGuesses((prevGuesses) => [...prevGuesses, input]);
+      setInput('');
+    } else {
+      alert('Not in Word List!');
+    }
   };
 
   useEffect(() => {
@@ -41,7 +46,7 @@ export default function Home() {
     <div className="max-w-screen-sm md:max-w-screen-md min-h-screen mx-auto flex flex-col justify-between">
       <Header />
       <Game input={input} word={word || ''} guesses={guesses} />
-      <Footer />
+      <Footer input={input} />
     </div>
   );
 }

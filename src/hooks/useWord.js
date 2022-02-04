@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function useWord() {
   const [word, setWord] = useState(null);
+  const [wordList, setWordList] = useState([]);
 
   useEffect(() => {
     async function getRandomWord() {
@@ -12,7 +13,8 @@ export default function useWord() {
       fetch('/assets/data/word-list.txt')
         .then((r) => r.text())
         .then((wordsList) => {
-          const wordsArray = wordsList.split('\n');
+          const wordsArray = wordsList.split('\r\n');
+          setWordList(wordsArray);
           const randomWord = wordsArray[getRandomInt(wordsArray.length - 1)];
 
           setWord(randomWord);
@@ -22,5 +24,5 @@ export default function useWord() {
     getRandomWord();
   }, []);
 
-  return word;
+  return { word, wordList };
 }
