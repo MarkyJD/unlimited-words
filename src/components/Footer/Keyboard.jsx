@@ -1,6 +1,7 @@
 import React from 'react';
 import './footer.css';
 import PropTypes from 'prop-types';
+import Keys from './Keys';
 
 export default function Keyboard({ input, setInput, handleSubmit }) {
   const onClick = (value) => {
@@ -15,236 +16,46 @@ export default function Keyboard({ input, setInput, handleSubmit }) {
   return (
     <div id="keyboard">
       <div className="flex justify-center mb-1">
-        <button
-          type="button"
-          value="Q"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          Q
-        </button>
-        <button
-          type="button"
-          value="W"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          W
-        </button>
-        <button
-          type="button"
-          value="E"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          E
-        </button>
-        <button
-          type="button"
-          value="R"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          R
-        </button>
-        <button
-          type="button"
-          value="T"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          T
-        </button>
-        <button
-          type="button"
-          value="Y"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          Y
-        </button>
-        <button
-          type="button"
-          value="U"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          U
-        </button>
-        <button
-          type="button"
-          value="I"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          I
-        </button>
-        <button
-          type="button"
-          value="O"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          O
-        </button>
-        <button
-          type="button"
-          value="P"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          P
-        </button>
+        <Keys value="Q" onClick={onClick} />
+        <Keys value="W" onClick={onClick} />
+        <Keys value="E" onClick={onClick} />
+        <Keys value="R" onClick={onClick} />
+        <Keys value="T" onClick={onClick} />
+        <Keys value="Y" onClick={onClick} />
+        <Keys value="U" onClick={onClick} />
+        <Keys value="I" onClick={onClick} />
+        <Keys value="O" onClick={onClick} />
+        <Keys value="P" onClick={onClick} />
       </div>
       <div className="flex justify-center mb-1">
-        <button
-          type="button"
-          value="A"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          A
-        </button>
-        <button
-          type="button"
-          value="S"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          S
-        </button>
-        <button
-          type="button"
-          value="D"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          D
-        </button>
-        <button
-          type="button"
-          value="F"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          F
-        </button>
-        <button
-          type="button"
-          value="G"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          G
-        </button>
-        <button
-          type="button"
-          value="H"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          H
-        </button>
-        <button
-          type="button"
-          value="J"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          J
-        </button>
-        <button
-          type="button"
-          value="K"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          K
-        </button>
-        <button
-          type="button"
-          value="L"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          L
-        </button>
+        <Keys value="A" onClick={onClick} />
+        <Keys value="S" onClick={onClick} />
+        <Keys value="D" onClick={onClick} />
+        <Keys value="F" onClick={onClick} />
+        <Keys value="G" onClick={onClick} />
+        <Keys value="H" onClick={onClick} />
+        <Keys value="J" onClick={onClick} />
+        <Keys value="K" onClick={onClick} />
+        <Keys value="L" onClick={onClick} />
       </div>
       <div className="flex justify-center mb-5">
-        <button
-          type="button"
+        <Keys
           value="ENTER"
-          className="buttonLetter"
           onClick={onClick}
           style={{ width: `70px`, height: '58px' }}
-        >
-          ENTER
-        </button>
-        <button
-          type="button"
-          value="Z"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          Z
-        </button>
-        <button
-          type="button"
-          value="X"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          X
-        </button>
-        <button
-          type="button"
-          value="C"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          C
-        </button>
-        <button
-          type="button"
-          value="V"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          V
-        </button>
-        <button
-          type="button"
-          value="B"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          B
-        </button>
-        <button
-          type="button"
-          value="N"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          N
-        </button>
-        <button
-          type="button"
-          value="M"
-          className="buttonLetter"
-          onClick={onClick}
-        >
-          M
-        </button>
-        <button
-          type="button"
+        />
+        <Keys value="Z" onClick={onClick} />
+        <Keys value="X" onClick={onClick} />
+        <Keys value="C" onClick={onClick} />
+        <Keys value="V" onClick={onClick} />
+        <Keys value="B" onClick={onClick} />
+        <Keys value="N" onClick={onClick} />
+        <Keys value="M" onClick={onClick} />
+        <Keys
           value="DEL"
-          className="buttonLetter"
           onClick={onClick}
           style={{ width: `70px`, height: '58px' }}
-        >
-          DEL
-        </button>
+        />
       </div>
     </div>
   );

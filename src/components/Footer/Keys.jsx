@@ -1,33 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Button = ({ input, setInput, handleSubmit }) => (
-  <button className="buttonLetter" style={buttonStyle} onClick={onClick}>
-    {value}
-  </button>
-);
+export default function Keys({ value }) {
+  const buttonStyle = {
+    width: '43px',
+    height: '58px',
+  };
 
-const buttonStyle = {
-  width: '43px',
-  height: '58px',
-};
-const onClick = (value) => {
-  if (value.target.value === 'ENTER') {
-    handleSubmit();
-  } else if (value.target.value === 'DEL') {
-    setInput(input.slice(0, -1));
-  } else setInput((prev) => prev + value.target.value);
-  console.log(input);
-};
+  const buttonClass =
+    'flex-1 items-center justify-center rounded-xl mx-0.5 text-xs font-bold cursor-pointer select-none dark:text-black bg-gray-200 dark:bg-slate-200 hover:bg-purple-200 dark:hover:bg-blue-200';
+  // {
+  //   'bg-gray-200 dark:bg-slate-200 hover:bg-purple-200 dark:hover:bg-blue-200':
+  //     !status,
+  //   'bg-gray-400 dark:bg-slate-300': status === 'absent',
+  //   'bg-green-400 dark:bg-green-300':
+  //     status === 'correct',
+  //   'bg-amber-400 dark:bg-amber-300 dark:text-slate-900':
+  //     status === 'present',
+  // });
 
-return (
-  <div>
-    <Button />
-  </div>
-);
+  return (
+    <button type="button" style={buttonStyle} className={buttonClass}>
+      {value}
+    </button>
+  );
+}
 
-Button.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+Keys.propTypes = {
+  value: PropTypes.string.isRequired,
 };
