@@ -14,7 +14,7 @@
   }
 
   .buttonLetter {
-    @apply flex items-center justify-center rounded-2xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-300 dark:text-black hover:bg-purple-500;
+    @apply flex-1 items-center justify-center rounded-xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-300 dark:text-black hover:bg-purple-500;
   }
 }
 
