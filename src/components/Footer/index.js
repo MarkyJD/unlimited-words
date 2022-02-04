@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Keys from './Keys';
+import Keyboard from './Keyboard';
 
 export default function Footer({ input, setInput, handleSubmit }) {
-  return <Keys input={input} setInput={setInput} handleSubmit={handleSubmit} />;
+  return (
+    <Keyboard input={input} setInput={setInput} handleSubmit={handleSubmit} />
+  );
 }
 
 Footer.propTypes = {
