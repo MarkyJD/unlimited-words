@@ -11,12 +11,14 @@ export default function Home() {
   const { word, wordList } = useWord();
   const [input, setInput] = useState('');
   const [guesses, setGuesses] = useState([]);
-
   console.log(word);
 
   const handleSubmit = async () => {
     if (wordList.includes(input.toLowerCase())) {
       setGuesses((prevGuesses) => [...prevGuesses, input]);
+      if (input.toLowerCase() === word.toLowerCase()) {
+        alert('Congratulations!!!');
+      }
       setInput('');
     } else {
       alert('Not in Word List!');

@@ -10,7 +10,7 @@
   }
 
   .letter {
-    @apply h-14 rounded w-14 sm:h-14 sm:w-14 md:h-16 md:w-16 uppercase text-lg border flex items-center justify-center border-slate-400;
+    @apply font-bold transition duration-150 rounded h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 uppercase text-lg border border-dashed flex items-center justify-center border-slate-300 dark:border-slate-700;
   }
 
   .buttonLetter {
@@ -35,6 +35,26 @@
 
     .text-shadow-none {
       text-shadow: none;
+    }
+
+    .delay1 {
+      transition-delay: 100ms;
+    }
+
+    .delay2 {
+      transition-delay: 200ms;
+    }
+
+    .delay3 {
+      transition-delay: 300ms;
+    }
+
+    .delay4 {
+      transition-delay: 400ms;
+    }
+
+    .delay5 {
+      transition-delay: 500ms;
     }
   }
 }
