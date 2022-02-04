@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import './footer.css';
 
-export default function Footer() {
+export default function Footer({ input }) {
   const onClick = (value) => {
     console.log(value);
   };
 
-  const buttonStyle =
-    'flex items-center justify-center rounded-2xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-300 dark:text-white hover:bg-purple-500';
+  // const buttonStyle =
+  //   'flex items-center justify-center rounded-2xl mx-0.5 text-xs font-bold cursor-pointer select-none bg-gray-300 dark:text-black hover:bg-purple-500';
 
   return (
     <div id="keyboard">
@@ -15,7 +16,7 @@ export default function Footer() {
         <button type="button" value="Q" onClick={onClick}>
           Q
         </button>
-        <button type="button" className={buttonStyle}>
+        <button type="button" className="buttonLetter ">
           W
         </button>
         <button type="button">E</button>
@@ -38,7 +39,7 @@ export default function Footer() {
         <button type="button">K</button>
         <button type="button">L</button>
       </div>
-      <div className="flex justify-center mb-1">
+      <div className="flex justify-center mb-3">
         <button type="button" style={{ width: `70px`, height: '58px' }}>
           ENTER
         </button>
@@ -56,3 +57,7 @@ export default function Footer() {
     </div>
   );
 }
+
+Footer.propTypes = {
+  input: PropTypes.string.isRequired,
+};
