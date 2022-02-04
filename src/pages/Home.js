@@ -48,7 +48,7 @@ export default function Home() {
     <div className="max-w-screen-sm md:max-w-screen-md min-h-screen mx-auto flex flex-col justify-between">
       <Header />
       <Game input={input} word={word || ''} guesses={guesses} />
-      <Footer input={input} setInput={setInput} />
+      <Footer input={input} setInput={setInput} handleSubmit={handleSubmit} />
     </div>
   );
 }

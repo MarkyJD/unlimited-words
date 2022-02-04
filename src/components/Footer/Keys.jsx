@@ -2,10 +2,10 @@ import React from 'react';
 import './footer.css';
 import PropTypes from 'prop-types';
 
-export default function Keys({ input, setInput }) {
+export default function Keys({ input, setInput, handleSubmit }) {
   const onClick = (value) => {
     if (value.target.value === 'ENTER') {
-      console.log('This should submit');
+      handleSubmit();
     } else if (value.target.value === 'DEL') {
       setInput(input.slice(0, -1));
     } else setInput((prev) => prev + value.target.value);
@@ -173,4 +173,5 @@ export default function Keys({ input, setInput }) {
 Keys.propTypes = {
   input: PropTypes.string.isRequired,
   setInput: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
