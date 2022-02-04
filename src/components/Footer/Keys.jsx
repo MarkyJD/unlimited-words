@@ -1,9 +1,11 @@
 import React from 'react';
 import './footer.css';
+import PropTypes from 'prop-types';
 
-export default function Keys() {
+export default function Keys({ input, setInput }) {
   const onClick = (value) => {
-    console.log(value);
+    setInput((prev) => prev + value.target.value);
+    console.log(input);
   };
 
   return (
@@ -121,3 +123,8 @@ export default function Keys() {
     </div>
   );
 }
+
+Keys.propTypes = {
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
+};
