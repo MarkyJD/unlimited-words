@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Keyboard from './Keyboard';
+import Numpad from './Numpad';
 
 export default function Footer({ input, setInput, handleSubmit }) {
   return (
-    <Keyboard input={input} setInput={setInput} handleSubmit={handleSubmit} />
+    <Numpad input={input} setInput={setInput} handleSubmit={handleSubmit} />
   );
 }
 

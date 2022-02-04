@@ -1,10 +1,12 @@
 import React from 'react';
 import './footer.css';
 import PropTypes from 'prop-types';
+import { RiDeleteBackLine } from 'react-icons/ri';
 import Keys from './Keys';
 
 export default function Keyboard({ input, setInput, handleSubmit }) {
   const onClick = (value) => {
+    console.log(value);
     if (value.target.value === 'ENTER') {
       handleSubmit();
     } else if (value.target.value === 'DEL') {
@@ -52,7 +54,7 @@ export default function Keyboard({ input, setInput, handleSubmit }) {
         <Keys value="N" onClick={onClick} />
         <Keys value="M" onClick={onClick} />
         <Keys
-          value="DEL"
+          value=<RiDeleteBackLine />
           onClick={onClick}
           style={{ width: `70px`, height: '58px' }}
         />
