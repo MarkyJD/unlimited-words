@@ -1,5 +1,4 @@
 import React from 'react';
-import './footer.css';
 import PropTypes from 'prop-types';
 import Keys from './Keys';
 

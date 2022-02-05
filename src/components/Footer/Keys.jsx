@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Charmap } from '../../helpers/charMap';
 
-export default function Keys({ value }) {
-  const buttonStyle = {
-    width: '43px',
-    height: '58px',
+export default function Keys({ value, width = 40, height = 53 }) {
+  const handleClick = (value) => {
+    console.log(value.target.innerText);
   };
 
   const buttonClass =
@@ -20,12 +20,19 @@ export default function Keys({ value }) {
   // });
 
   return (
-    <button type="button" style={buttonStyle} className={buttonClass}>
+    <button
+      type="button"
+      style={{ width: `${width}px`, height: `${height}px` }}
+      className={buttonClass}
+      onClick={handleClick}
+    >
       {value}
     </button>
   );
 }
 
 Keys.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.array.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };

@@ -5,7 +5,7 @@ import Numpad from './Numpad';
 
 export default function Footer({ input, setInput, handleSubmit }) {
   return (
-    <Numpad input={input} setInput={setInput} handleSubmit={handleSubmit} />
+    <Keyboard input={input} setInput={setInput} handleSubmit={handleSubmit} />
   );
 }
 
