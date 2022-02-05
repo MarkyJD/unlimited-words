@@ -4,12 +4,12 @@ import Keys from './Keys';
 
 export default function Keyboard({ input, setInput, handleSubmit }) {
   const onClick = (value) => {
-    console.log(value);
-    if (value.target.value === 'ENTER') {
+    console.log(value.target.name);
+    if (value.target.name === 'ENTER') {
       handleSubmit();
-    } else if (value.target.value === 'DEL') {
+    } else if (value.target.name === 'DEL') {
       setInput(input.slice(0, -1));
-    } else setInput((prev) => prev + value.target.value);
+    } else setInput((prev) => prev + value.target.name);
     console.log(input);
   };
 
@@ -43,6 +43,7 @@ export default function Keyboard({ input, setInput, handleSubmit }) {
           value="ENTER"
           onClick={onClick}
           style={{ width: `70px`, height: '58px' }}
+          handleSubmit={handleSubmit}
         />
         <Keys value="Z" onClick={onClick} />
         <Keys value="X" onClick={onClick} />

@@ -35,3 +35,8 @@ export const Charmap = [
     status: '',
   },
 ];
+
+// for (let i = 0; i < chars.length; i += 1) {
+//   Charmap.chars[i].push = chars[i];
+//   console.log(Charmap);
+// }
