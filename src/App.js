@@ -10,6 +10,7 @@ function App() {
 
   for (let i = 65; i < 91; i++) {
     chars.push({ char: String.fromCharCode(i), status: '' });
+    console.log('asldkfjsdalfk');
   }
   const [isDarkMode, toggleDarkMode] = useDarkMode();
   const [charMap, setCharMap] = useState(chars);
@@ -30,7 +31,7 @@ function App() {
       if (wordLetters[i] === correctWordLetters[i]) {
         currentChar.status = 'correct';
         copyOfCharsMap[foundIndex] = currentChar;
-      } else if (word.includes(correctWordLetters[i])) {
+      } else if (correctWord.includes(wordLetters[i])) {
         currentChar.status = 'present';
         copyOfCharsMap[foundIndex] = currentChar;
       } else {
