@@ -2,18 +2,24 @@ import React from 'react';
 import './footer.css';
 import PropTypes from 'prop-types';
 
-export default function Keyboard({ input, setInput, handleSubmit }) {
+export default function Keypad({ input, setInput, handleSubmit, gameWord }) {
   const onClick = (value) => {
     if (value.target.value === 'ENTER') {
       handleSubmit();
     } else if (value.target.value === 'DEL') {
-      setInput(input.slice(0, -1));
-    } else setInput((prev) => prev + value.target.value);
-    console.log(input);
+      setInput((prev) => {
+        const tempArray = [...prev];
+        tempArray.pop();
+        return tempArray;
+      });
+    } else if (input.length < gameWord.length) {
+      setInput((prev) => [...prev, value.target.value]);
+    }
   };
 
   return (
     <div id="keyboard">
+      {console.log(input)}
       <div className="flex justify-center mb-1">
         <button
           type="button"
@@ -250,8 +256,9 @@ export default function Keyboard({ input, setInput, handleSubmit }) {
   );
 }
 
-Keyboard.propTypes = {
-  input: PropTypes.string.isRequired,
+Keypad.propTypes = {
+  input: PropTypes.array.isRequired,
   setInput: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  gameWord: PropTypes.string.isRequired,
 };
