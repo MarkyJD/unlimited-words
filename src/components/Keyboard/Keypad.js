@@ -2,7 +2,7 @@ import React from 'react';
 import './footer.css';
 import PropTypes from 'prop-types';
 
-export default function Keyboard({ input, setInput, handleSubmit }) {
+export default function Keypad({ input, setInput, handleSubmit }) {
   const onClick = (value) => {
     if (value.target.value === 'ENTER') {
       handleSubmit();
@@ -250,7 +250,7 @@ export default function Keyboard({ input, setInput, handleSubmit }) {
   );
 }
 
-Keyboard.propTypes = {
+Keypad.propTypes = {
   input: PropTypes.string.isRequired,
   setInput: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
