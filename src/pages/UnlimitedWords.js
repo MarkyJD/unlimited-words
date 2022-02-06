@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import Keyboard from '../components/Keyboard';
 import Board from '../components/Board';
 import NextGuess from '../components/Board/NextGuess';
 import CurrentGuess from '../components/Board/CurrentGuess';
@@ -120,6 +121,12 @@ export default function UnlimitedWords({
             ))
           : null}
       </Board>
+      <Keyboard
+        input={input}
+        setInput={setInput}
+        handleSubmit={handleSubmit}
+        gameWord={gameWord}
+      />
     </div>
   );
 }
