@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Charmap } from '../../helpers/charMap';
 
 export default function Keys({ value, width = 40, onClick }) {
+  const char = Charmap.find(({ char }) => char === value);
+  console.log(char);
+
   const buttonClass =
     'flex-1 items-center justify-center rounded-xl mx-0.5 text-xs font-bold cursor-pointer select-none dark:text-black bg-gray-200 dark:bg-slate-200 hover:bg-purple-200 dark:hover:bg-blue-200';
+
+  // buttonClass += !status
+  //   ? ' bg-gray-200 dark:bg-slate-200 hover:bg-purple-200 dark:hover:bg-blue-200'
+  //   : '';
+
   // {
   //   'bg-gray-200 dark:bg-slate-200 hover:bg-purple-200 dark:hover:bg-blue-200': !status,
   //   'bg-gray-400 dark:bg-slate-300': status === 'absent',

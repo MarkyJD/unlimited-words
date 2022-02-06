@@ -29,17 +29,16 @@ export const chars = [
   'M',
 ];
 
-export const Charmap = [
-  {
-    char: '',
-    status: '',
-  },
-];
+export const Charmap = [];
 
 export default function keymap() {
-  for (let i = 0; i < chars.length; i += 1) {
-    Charmap.chars = chars[i];
-    Charmap.status = '';
-    console.log(Charmap);
+  if (Charmap.length === 0) {
+    for (let i = 0; i < chars.length; i += 1) {
+      Charmap.push({
+        char: chars[i],
+        status: '',
+      });
+    }
+    // console.log(Charmap);
   }
 }
