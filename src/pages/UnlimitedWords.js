@@ -1,5 +1,7 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable arrow-body-style */
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Header from '../components/Header';
 import Keyboard from '../components/Keyboard';
 import Board from '../components/Board';
@@ -19,12 +21,23 @@ export default function UnlimitedWords({
   const [isGameOver, setIsGameOver] = useState(false);
   const [usedChars, setUsedChars] = useState([]);
 
+  const reset = () => {
+    setInput([]);
+    setGuesses([[]]);
+    setIsGameOver(false);
+    setUsedChars([]);
+  };
+
   function updateChars(currentGuess) {
     const correctWord = gameWord.toUpperCase().split('');
     const newChars = [];
 
     for (let i = 0; i < gameWord.length; i += 1) {
       /* Flags */
+      const found = usedChars.find(
+        ({ char }) => char.toUpperCase() === currentGuess[i].toUpperCase()
+      );
+
       const correct =
         currentGuess[i].toUpperCase() === correctWord[i].toUpperCase();
       const present = gameWord
@@ -36,7 +49,7 @@ export default function UnlimitedWords({
           char: currentGuess[i],
           status: 'correct',
         });
-      } else if (present) {
+      } else if (present && !found) {
         newChars.push({
           char: currentGuess[i],
           status: 'present',
@@ -106,11 +119,29 @@ export default function UnlimitedWords({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [input.length]);
 
+  const gameWordCharCount = useMemo(() => {
+    return gameWord
+      .toUpperCase()
+      .split('')
+      .reduce((accumulator, char) => {
+        if (!accumulator.hasOwnProperty(char)) {
+          accumulator[char] = 1;
+        } else {
+          accumulator[char] += 1;
+        }
+        return accumulator;
+      }, {});
+  }, [gameWord]);
+
   return (
     <div className="max-w-screen-sm md:max-w-screen-md min-h-screen mx-auto flex flex-col justify-between">
-      <Header changeMode={changeMode} />
+      <Header changeMode={changeMode} reset={reset} />
       <Board>
-        <PrevGuesses guesses={guesses} usedChars={usedChars} />
+        <PrevGuesses
+          guesses={guesses}
+          gameWord={gameWord}
+          gameWordCharCount={gameWordCharCount}
+        />
 
         {!isGameOver && <CurrentGuess length={gameWord.length} input={input} />}
 
