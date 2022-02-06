@@ -4,7 +4,7 @@ import Keys from './Keys';
 
 export default function Keyboard({ input, setInput, handleSubmit }) {
   const onClick = (value) => {
-    console.log(value.target.name);
+    console.log(value);
     if (value.target.name === 'ENTER') {
       handleSubmit();
     } else if (value.target.name === 'DEL') {

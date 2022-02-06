@@ -36,7 +36,10 @@ export const Charmap = [
   },
 ];
 
-// for (let i = 0; i < chars.length; i += 1) {
-//   Charmap.chars[i].push = chars[i];
-//   console.log(Charmap);
-// }
+export default function keymap() {
+  for (let i = 0; i < chars.length; i += 1) {
+    Charmap.chars = chars[i];
+    Charmap.status = '';
+    console.log(Charmap);
+  }
+}

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import useWord from '../hooks/useWord';
 import { isAlpha } from '../helpers';
+import keymap from '../helpers/charMap';
 
 const WORD_LENGTH = 5;
 
@@ -11,6 +12,7 @@ export default function Home() {
   const { word, wordList } = useWord();
   const [input, setInput] = useState('');
   const [guesses, setGuesses] = useState([]);
+  keymap();
   console.log(word);
 
   const handleSubmit = async () => {
