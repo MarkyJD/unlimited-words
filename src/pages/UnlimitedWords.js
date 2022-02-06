@@ -10,6 +10,7 @@ export default function UnlimitedWords({
   gameWord,
   wordList,
   totalGuesses = 6,
+  changeMode,
 }) {
   console.log(gameWord);
   const [input, setInput] = useState([]);
@@ -106,7 +107,7 @@ export default function UnlimitedWords({
 
   return (
     <div className="max-w-screen-sm md:max-w-screen-md min-h-screen mx-auto flex flex-col justify-between">
-      <Header />
+      <Header changeMode={changeMode} />
       <Board>
         <PrevGuesses guesses={guesses} usedChars={usedChars} />
 
@@ -127,4 +128,5 @@ UnlimitedWords.propTypes = {
   gameWord: PropTypes.string.isRequired,
   wordList: PropTypes.array.isRequired,
   totalGuesses: PropTypes.number,
+  changeMode: PropTypes.func.isRequired,
 };

@@ -1,8 +1,9 @@
-import { BiCog, BiMoon, BiSun } from 'react-icons/bi';
+import PropTypes from 'prop-types';
+import { BiCog, BiGame, BiMoon, BiSun } from 'react-icons/bi';
 import { useContext } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 
-export default function Header() {
+export default function Header({ changeMode }) {
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
   return (
     <div className="container border-b border-purple-200 h-12 flex justify-between items-center">
@@ -15,8 +16,13 @@ export default function Header() {
         ) : (
           <BiMoon className="icon" onClick={toggleDarkMode} />
         )}
+        <BiGame className="icon" onClick={changeMode} />
         <BiCog className="icon" />
       </div>
     </div>
   );
 }
+
+Header.propTypes = {
+  changeMode: PropTypes.func.isRequired,
+};

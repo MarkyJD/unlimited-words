@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useWord() {
+export default function useWord(mode) {
   const [word, setWord] = useState(null);
   const [wordList, setWordList] = useState([]);
 
@@ -9,8 +9,16 @@ export default function useWord() {
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
+      let filename = 'words-list.txt';
+      if (mode === 'normal') {
+        filename = 'word-list.txt';
+      }
 
-      fetch('/assets/data/word-list.txt')
+      if (mode === 'hard') {
+        filename = 'seven.txt';
+      }
+
+      fetch(`/assets/data/${filename}`)
         .then((r) => r.text())
         .then((wordsList) => {
           const wordsArray = wordsList.split('\r\n');
@@ -22,7 +30,7 @@ export default function useWord() {
     }
 
     getRandomWord();
-  }, []);
+  }, [mode]);
 
   return { word, wordList };
 }
