@@ -1,13 +1,16 @@
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable arrow-body-style */
 import PropTypes from 'prop-types';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import Header from '../components/Header';
 import Keyboard from '../components/Keyboard';
+import Keypad from '../components/Keyboard/Keypad';
 import Board from '../components/Board';
 import NextGuess from '../components/Board/NextGuess';
 import CurrentGuess from '../components/Board/CurrentGuess';
 import PrevGuesses from '../components/Board/PrevGuesses';
+import CharMapContext from '../context/CharMapContext';
+import Message from '../components/Board/Message';
 
 export default function UnlimitedWords({
   gameWord,
@@ -19,50 +22,14 @@ export default function UnlimitedWords({
   const [input, setInput] = useState([]);
   const [guesses, setGuesses] = useState([[]]);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [usedChars, setUsedChars] = useState([]);
+  const { charMap, updateCharMap } = useContext(CharMapContext);
+  const [message, setMessage] = useState('');
 
   const reset = () => {
     setInput([]);
     setGuesses([[]]);
     setIsGameOver(false);
-    setUsedChars([]);
   };
-
-  function updateChars(currentGuess) {
-    const correctWord = gameWord.toUpperCase().split('');
-    const newChars = [];
-
-    for (let i = 0; i < gameWord.length; i += 1) {
-      /* Flags */
-      const found = usedChars.find(
-        ({ char }) => char.toUpperCase() === currentGuess[i].toUpperCase()
-      );
-
-      const correct =
-        currentGuess[i].toUpperCase() === correctWord[i].toUpperCase();
-      const present = gameWord
-        .toUpperCase()
-        .includes(currentGuess[i].toUpperCase());
-
-      if (correct) {
-        newChars.push({
-          char: currentGuess[i],
-          status: 'correct',
-        });
-      } else if (present && !found) {
-        newChars.push({
-          char: currentGuess[i],
-          status: 'present',
-        });
-      } else {
-        newChars.push({
-          char: currentGuess[i],
-          status: 'absent',
-        });
-      }
-    }
-    setUsedChars([...newChars]);
-  }
 
   const handleSubmit = () => {
     // Set flags
@@ -73,18 +40,19 @@ export default function UnlimitedWords({
 
     if (isInWordList) {
       setGuesses((prevGuesses) => [...prevGuesses, input]);
-      updateChars(input);
+
+      updateCharMap(input.join('').toUpperCase(), gameWord);
+
       if (gameOver) {
         setIsGameOver(true);
       }
 
       if (isCorrectWord) {
-        alert('Congratulations!!!');
+        setMessage('correct');
       }
-
       setInput([]);
     } else {
-      alert('Not in Word List!');
+      setMessage('not in word list');
     }
   };
 
@@ -95,7 +63,6 @@ export default function UnlimitedWords({
       const isValidKey = /^[a-zA-Z]$/i.test(key);
       const isEnter = key === 'ENTER' && input.length === gameWord.length;
       const isBackspace = key === 'BACKSPACE';
-      console.log(key);
 
       // Submit guess and append guesses
       if (isEnter) {
@@ -103,6 +70,7 @@ export default function UnlimitedWords({
 
         // Functional backspace
       } else if (isBackspace) {
+        setMessage('');
         setInput((prev) => {
           const tempArray = [...prev];
           tempArray.pop();
@@ -137,6 +105,12 @@ export default function UnlimitedWords({
     <div className="max-w-screen-sm md:max-w-screen-md min-h-screen mx-auto flex flex-col justify-between">
       <Header changeMode={changeMode} reset={reset} />
       <Board>
+        <Message
+          message={message}
+          input={input || ['']}
+          isGameOver={isGameOver}
+          gameWord={gameWord}
+        />
         <PrevGuesses
           guesses={guesses}
           gameWord={gameWord}
@@ -152,12 +126,15 @@ export default function UnlimitedWords({
             ))
           : null}
       </Board>
-      <Keyboard
-        input={input}
-        setInput={setInput}
-        handleSubmit={handleSubmit}
-        gameWord={gameWord}
-      />
+      <Keyboard>
+        <Keypad
+          input={input}
+          setInput={setInput}
+          handleSubmit={handleSubmit}
+          gameWord={gameWord}
+          charMap={charMap}
+        />
+      </Keyboard>
     </div>
   );
 }

@@ -1,21 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Keypad from './Keypad';
 
-export default function Keyboard({ input, setInput, handleSubmit, gameWord }) {
+export default function Keyboard({ children }) {
   return (
-    <Keypad
-      input={input}
-      setInput={setInput}
-      handleSubmit={handleSubmit}
-      gameWord={gameWord}
-    />
+    <div className="flex flex-col items-center space-y-2 mb-8 md:mb-12 lg:mb-14 xl:mb-16">
+      {children}
+    </div>
   );
 }
 
 Keyboard.propTypes = {
-  input: PropTypes.array.isRequired,
-  setInput: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  gameWord: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };

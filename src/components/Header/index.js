@@ -8,7 +8,7 @@ export default function Header({ changeMode, reset }) {
   return (
     <div className="container border-b border-purple-200 h-12 md:h-14 lg:h-16 flex justify-between items-center">
       <h1 className="font-hand text-shadow-lg text-xl md:text-2xl lg:text-3xl underline cursor-pointer hover:text-purple-500 decoration-purple-500 underline-offset-2">
-        Wordle & More
+        Words Unlimited
       </h1>
       <div className="flex items-center space-x-4">
         {isDarkMode ? (
