@@ -18,7 +18,6 @@ export default function UnlimitedWords({
   totalGuesses = 6,
   changeMode,
 }) {
-  console.log(gameWord);
   const [input, setInput] = useState([]);
   const [guesses, setGuesses] = useState([[]]);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -29,6 +28,7 @@ export default function UnlimitedWords({
     setInput([]);
     setGuesses([[]]);
     setIsGameOver(false);
+    setMessage('');
   };
 
   const handleSubmit = () => {

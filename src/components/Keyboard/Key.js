@@ -12,7 +12,6 @@ export default function Key({ value, onClick, status }) {
     classes = ' absent ';
   }
 
-  console.log(classes);
   return (
     <button
       type="button"

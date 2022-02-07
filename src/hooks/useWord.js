@@ -24,7 +24,7 @@ export default function useWord(mode) {
           const wordsArray = wordsList.split('\r\n');
           setWordList(wordsArray);
           const randomWord = wordsArray[getRandomInt(wordsArray.length - 1)];
-
+          console.log(randomWord);
           setWord(randomWord);
         });
     }
