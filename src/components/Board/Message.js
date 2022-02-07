@@ -10,6 +10,8 @@ export default function Message({ message, input, isGameOver, gameWord }) {
   } else if (message === 'correct') {
     output = `${gameWord} is the correct answer!`;
     classes = ' text-green-600 dark:text-green-400';
+  } else if (isGameOver) {
+    output = message;
   }
 
   return (

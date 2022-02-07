@@ -34,7 +34,7 @@ export default function UnlimitedWords({
   const handleSubmit = () => {
     // Set flags
     const isInWordList = wordList.includes(input.join('').toLowerCase());
-    const gameOver = totalGuesses === guesses.length;
+    const outOfGuesses = totalGuesses === guesses.length;
     const isCorrectWord =
       input.join('').toLowerCase() === gameWord.toLowerCase();
 
@@ -43,12 +43,58 @@ export default function UnlimitedWords({
 
       updateCharMap(input.join('').toUpperCase(), gameWord);
 
-      if (gameOver) {
+      if (!isGameOver && outOfGuesses && !isCorrectWord) {
         setIsGameOver(true);
+        setMessage('oof unlucky... Better luck next time');
       }
 
       if (isCorrectWord) {
         setMessage('correct');
+        setIsGameOver(true);
+        if (guesses.length < totalGuesses) {
+          const winBy = totalGuesses - guesses.length;
+          if (winBy === 5) {
+            setGuesses((prev) => [
+              ...prev,
+              ['h', 'o', 'l', 'y', ' '],
+              ['s', 'h', 'i', 't', '!'],
+              ['w', 'h', 'a', 't', ' '],
+              ['t', 'h', 'e', ' ', ' '],
+              ['f', 'u', 'c', 'k', '!'],
+            ]);
+          }
+
+          if (winBy === 4) {
+            setGuesses((prev) => [
+              ...prev,
+              ['d', 'u', 'd', 'e', '!'],
+              ['y', 'o', 'u', ' ', 'a'],
+              ['l', 'i', 'v', 'i', 'n'],
+              ['l', 'e', 'g', 'e', 'n'],
+            ]);
+          }
+
+          if (winBy === 3) {
+            setGuesses((prev) => [
+              ...prev,
+              ['g', 'o', 'o', 'd', ' '],
+              ['j', 'o', 'b', ' ', ' '],
+              ['d', 'u', 'd', 'e', '!'],
+            ]);
+          }
+
+          if (winBy === 2) {
+            setGuesses((prev) => [
+              ...prev,
+              ['n', 'o', 'b', ' ', ' '],
+              ['b', 'a', 'd', ' ', ' '],
+            ]);
+          }
+
+          if (winBy === 1) {
+            setGuesses((prev) => [...prev, ['.', '.', 's', 'a', 'd']]);
+          }
+        }
       }
       setInput([]);
     } else {
@@ -133,6 +179,7 @@ export default function UnlimitedWords({
           handleSubmit={handleSubmit}
           gameWord={gameWord}
           charMap={charMap}
+          setMessage={setMessage}
         />
       </Keyboard>
     </div>

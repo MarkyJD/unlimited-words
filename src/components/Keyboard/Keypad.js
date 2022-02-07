@@ -1,7 +1,4 @@
-import React, { useContext } from 'react';
-import './footer.css';
 import PropTypes from 'prop-types';
-import CharMapContext from '../../context/CharMapContext';
 import Key from './Key';
 
 export default function Keypad({
@@ -10,17 +7,23 @@ export default function Keypad({
   handleSubmit,
   gameWord,
   charMap,
+  setMessage,
 }) {
   const onClick = (value) => {
-    if (value.target.value === 'ENTER') {
+    if (value.target.value === 'ENTER' && input.length === gameWord.length) {
       handleSubmit();
-    } else if (value.target.value === 'DEL') {
+    } else if (value.target.value === 'DEL' && input.length > 0) {
       setInput((prev) => {
         const tempArray = [...prev];
         tempArray.pop();
         return tempArray;
       });
-    } else if (input.length < gameWord.length) {
+      setMessage('');
+    } else if (
+      input.length < gameWord.length &&
+      value.target.value !== 'ENTER' &&
+      value.target.value !== 'DEL'
+    ) {
       setInput((prev) => [...prev, value.target.value]);
     }
   };
@@ -69,4 +72,5 @@ Keypad.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   gameWord: PropTypes.string.isRequired,
   charMap: PropTypes.array.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };
