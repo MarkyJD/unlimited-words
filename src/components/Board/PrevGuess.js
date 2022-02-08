@@ -1,7 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
+import './style.css';
 
-export default function PrevGuess({ guess, gameWord, gameWordCharCount }) {
+export default function PrevGuess({
+  guess,
+  gameWord,
+  gameWordCharCount,
+  isLastGuess,
+}) {
   const charCount = { ...gameWordCharCount };
 
   guess.forEach((letter, i) => {
@@ -25,20 +31,25 @@ export default function PrevGuess({ guess, gameWord, gameWordCharCount }) {
           charCount[letter] -= 1;
         }
 
-        let classes = '';
-        if (isCorrect) {
-          classes = 'correct';
+        let classes = ``;
+        if (isLastGuess) {
+          if (isCorrect) {
+            classes = ` animate-revealCorrect reveal `;
+          } else if (isPresent) {
+            classes = ` animate-revealPresent reveal `;
+          } else {
+            classes = ` animate-revealAbsent reveal `;
+          }
+        } else if (isCorrect) {
+          classes = ' correct';
         } else if (isPresent) {
-          classes = 'present';
+          classes = ' present';
         } else {
-          classes = 'absent';
+          classes = ' absent';
         }
 
         return (
-          <div
-            className={`letter transition-all border-solid ${classes}`}
-            key={`${i}`}
-          >
+          <div className={`letter border-solid ${classes}`} key={`${i}`}>
             {letter}
           </div>
         );
@@ -51,4 +62,5 @@ PrevGuess.propTypes = {
   guess: PropTypes.array.isRequired,
   gameWord: PropTypes.string.isRequired,
   gameWordCharCount: PropTypes.object.isRequired,
+  isLastGuess: PropTypes.bool.isRequired,
 };

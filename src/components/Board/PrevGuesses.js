@@ -10,6 +10,7 @@ export default function PrevGuesses({ guesses, gameWord, gameWordCharCount }) {
           guess={guess}
           gameWord={gameWord}
           gameWordCharCount={gameWordCharCount}
+          isLastGuess={guesses.length - 1 === i}
         />
       ))}
     </>

@@ -1,0 +1,31 @@
+.reveal {
+  animation-fill-mode: forwards;
+}
+
+.reveal:nth-of-type(2) {
+  animation-delay: 300ms;
+}
+
+.reveal:nth-of-type(3) {
+  animation-delay: 600ms;
+}
+
+.reveal:nth-of-type(4) {
+  animation-delay: 900ms;
+}
+
+.reveal:nth-of-type(5) {
+  animation-delay: 1200ms;
+}
+
+.reveal:nth-of-type(6) {
+  animation-delay: 1500ms;
+}
+
+.reveal:nth-of-type(7) {
+  animation-delay: 1800ms;
+}
+
+.reveal:nth-of-type(8) {
+  animation-delay: 2100ms;
+}

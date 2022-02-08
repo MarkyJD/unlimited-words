@@ -45,7 +45,7 @@ export default function UnlimitedWords({
 
       if (!isGameOver && outOfGuesses && !isCorrectWord) {
         setIsGameOver(true);
-        setMessage('oof unlucky... Better luck next time');
+        setMessage("oh my... just sad. Don't even try again lol");
       }
 
       if (isCorrectWord) {
@@ -54,45 +54,23 @@ export default function UnlimitedWords({
         if (guesses.length < totalGuesses) {
           const winBy = totalGuesses - guesses.length;
           if (winBy === 5) {
-            setGuesses((prev) => [
-              ...prev,
-              ['h', 'o', 'l', 'y', ' '],
-              ['s', 'h', 'i', 't', '!'],
-              ['w', 'h', 'a', 't', ' '],
-              ['t', 'h', 'e', ' ', ' '],
-              ['f', 'u', 'c', 'k', '!'],
-            ]);
+            setMessage('Holy shit balls! You lucky bastard!');
           }
 
           if (winBy === 4) {
-            setGuesses((prev) => [
-              ...prev,
-              ['d', 'u', 'd', 'e', '!'],
-              ['y', 'o', 'u', ' ', 'a'],
-              ['l', 'i', 'v', 'i', 'n'],
-              ['l', 'e', 'g', 'e', 'n'],
-            ]);
+            setMessage('Woah! Thats an Eagle!');
           }
 
           if (winBy === 3) {
-            setGuesses((prev) => [
-              ...prev,
-              ['g', 'o', 'o', 'd', ' '],
-              ['j', 'o', 'b', ' ', ' '],
-              ['d', 'u', 'd', 'e', '!'],
-            ]);
+            setMessage('Impressive, friend');
           }
 
           if (winBy === 2) {
-            setGuesses((prev) => [
-              ...prev,
-              ['n', 'o', 'b', ' ', ' '],
-              ['b', 'a', 'd', ' ', ' '],
-            ]);
+            setMessage('Yeah, not bad.. not great either');
           }
 
           if (winBy === 1) {
-            setGuesses((prev) => [...prev, ['.', '.', 's', 'a', 'd']]);
+            setMessage('oof, it took 5 guesses? Could be worse I suppose...');
           }
         }
       }
@@ -166,7 +144,7 @@ export default function UnlimitedWords({
         {!isGameOver && <CurrentGuess length={gameWord.length} input={input} />}
 
         {/* Remaining Guesses */}
-        {totalGuesses - guesses.length > 0
+        {totalGuesses - guesses.length >= 0
           ? [...new Array(totalGuesses - guesses.length)].map((_, i) => (
               <NextGuess key={i} length={gameWord.length} />
             ))
