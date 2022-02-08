@@ -21,7 +21,7 @@ export default function useWord(mode) {
       fetch(`/assets/data/${filename}`)
         .then((r) => r.text())
         .then((wordsList) => {
-          const wordsArray = wordsList.split('\r\n');
+          const wordsArray = wordsList.split('\n');
           setWordList(wordsArray);
           const randomWord = wordsArray[getRandomInt(wordsArray.length - 1)];
           console.log(randomWord);
